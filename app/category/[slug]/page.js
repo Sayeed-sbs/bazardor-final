@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 import { getProducts, getCategory } from "@/lib/api";
 import { bn } from "@/lib/helpers";
 import NotFoundBox from "@/components/NotFoundBox";
+import CardSkeleton from "@/components/CardSkeleton";
 
 function PriceChange({ change }) {
   if (change > 0) {
