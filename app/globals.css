@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+  --color-brand: #1a9951;
+  --color-down: #d03739;
+  --color-ink: #1d271f;
+  --color-soft: #f0f5f0;
+}
+
+body {
+  background: #f0f5f0;
+  color: #1d271f;
+  font-family: var(--font-hind), sans-serif;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 60s linear infinite;
+}
