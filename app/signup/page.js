@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { authClient } from "@/lib/auth-client";
+import { GoogleIcon, GitHubIcon } from "@/components/SocialIcons";
 
 export default function SignUp() {
   const router = useRouter();
@@ -174,7 +175,7 @@ export default function SignUp() {
             onClick={() => socialLogin("google")}
             className="flex items-center justify-center cursor-pointer gap-2 rounded-lg border border-[#dce6df] px-2 py-2.5 text-xs font-medium hover:bg-gray-50"
           >
-            <span className="font-bold text-[#4285f4]">G</span>
+            <GoogleIcon />
             Google দিয়ে চালিয়ে যান
           </button>
 
@@ -183,7 +184,7 @@ export default function SignUp() {
             onClick={() => socialLogin("github")}
             className="flex items-center justify-center cursor-pointer gap-2 rounded-lg border border-[#dce6df] px-2 py-2.5 text-xs font-medium hover:bg-gray-50"
           >
-            <span className="font-bold">●</span>
+            <GitHubIcon />
             GitHub দিয়ে চালিয়ে যান
           </button>
         </div>
