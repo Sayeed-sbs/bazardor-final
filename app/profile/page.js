@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
@@ -9,6 +9,30 @@ import { authClient } from "@/lib/auth-client";
 
 export default function Profile() {
   const router = useRouter();
+  const [loggingOut, setLoggingOut] = useState(false);
+
+async function handleSignOut() {
+  if (loggingOut) return;
+
+  setLoggingOut(true);
+
+  try {
+    const { error } = await authClient.signOut();
+
+    if (error) {
+      toast.error(error.message || "সাইন আউট করা যায়নি");
+      return;
+    }
+
+    toast.success("সাইন আউট সফল হয়েছে");
+    router.replace("/");
+    router.refresh();
+  } catch {
+    toast.error("সাইন আউট করা যায়নি");
+  } finally {
+    setLoggingOut(false);
+  }
+}
   const { data: session, isPending } = authClient.useSession();
 
   useEffect(() => {
@@ -66,12 +90,14 @@ export default function Profile() {
           </div>
         </div>
 
-        <Link
-          href="/"
-          className="inline-flex items-center justify-center rounded-lg border border-red-400 px-4 py-2 text-sm font-medium text-red-500 transition hover:bg-red-50"
-        >
-          ↩ সাইন আউট
-        </Link>
+      <button
+            type="button"
+            onClick={handleSignOut}
+            disabled={loggingOut}
+            className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-red-400 px-4 py-2 text-sm font-medium text-red-500 transition hover:bg-red-50 disabled:opacity-50"
+          >
+          {loggingOut ? "অপেক্ষা করুন..." : "↩ সাইন আউট"}
+        </button>
       </div>
 
       <div className="mt-5 rounded-2xl border border-[#e1e9e3] bg-white p-5 sm:p-6">
