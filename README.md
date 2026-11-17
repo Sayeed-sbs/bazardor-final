@@ -49,8 +49,8 @@ The supplied Figma reference is included unchanged under `design/`.
 
 ## Links
 
-- GitHub: https://github.com/Sayeed-sbs/bazardor2.0
-- Live site: add the final verified deployment link here.
+- GitHub:  https://github.com/Sayeed-sbs/bazardor-final
+- Live site: (https://bazardor-final.vercel.app/).
 
 ## First run
 
